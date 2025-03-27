@@ -36,11 +36,13 @@ const videoSlice = createSlice({
       })
       .addCase(editVideo.fulfilled, (state: Data, action) => {
         state.data = state.data.map((video: Video) =>
-          video.id === action.payload.id ? action.payload : video
+          video.product_id === action.payload.id ? action.payload : video
         );
       })
       .addCase(deleteVideo.fulfilled, (state: Data, action) => {
-        state.data = state.data.filter((video) => video.id !== action.payload);
+        state.data = state.data.filter(
+          (video) => video.product_id !== action.payload
+        );
       });
   },
 });

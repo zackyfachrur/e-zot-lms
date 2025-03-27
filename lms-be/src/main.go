@@ -24,7 +24,7 @@ func main() {
 	godotenv.Load("../.env.local")
 	port := os.Getenv("COURSE_VIDEO_BE_PORT")
 	router.Use(cors.New(cors.Config{
-		AllowOrigins:     []string{"http://localhost:5173"}, // Izinkan akses dari frontend
+		AllowOrigins:     []string{"http://localhost:5173"}, // Izinkan akses dari frontend sementara saja
 		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
 		AllowHeaders:     []string{"Content-Type"},
 		AllowCredentials: true,

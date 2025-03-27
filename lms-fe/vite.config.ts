@@ -5,9 +5,6 @@ import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  define: {
-    WEB_API_PORT: 9000,
-  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),

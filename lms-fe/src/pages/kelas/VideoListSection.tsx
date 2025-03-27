@@ -1,11 +1,13 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "@store/Hooks";
 import { fetchVideos } from "@store/VideoAsyncThunk";
-import { LocalStorage } from "@type/PageType";
-import { Link } from "react-router-dom";
+// import { LocalStorage } from "@type/PageType";
+import { Video } from "@type/StoreType";
+// import { Link } from "react-router-dom";
+import ImageWithFallbacks from "@components/img/ImageWithFallback";
 
 const VideoListSection = () => {
-  const [category, setCategory] = useState("");
+  // const [category, setCategory] = useState("");
   const dispatch = useAppDispatch();
   const { data } = useAppSelector((state) => state.videos);
 
@@ -13,129 +15,66 @@ const VideoListSection = () => {
     dispatch(fetchVideos());
   }, [dispatch]);
 
-  const saveToLocalStorage = (video: LocalStorage) => {
-    localStorage.setItem("ID", video.id);
-    localStorage.setItem("Judul", video.judul);
-    localStorage.setItem("Deskripsi", video.deskripsi);
-    localStorage.setItem("Kategori", video.kategori);
-    localStorage.setItem("Harga", video.harga);
-  };
-
-  const handleCategoryClick = (selectedCategory: string) => {
-    setCategory(selectedCategory);
-  };
+  // const handleCategoryClick = (selectedCategory: string) => {
+  //   setCategory(selectedCategory);
+  // };
 
   return (
     <>
       <section className="flex flex-col items-center justify-center gap-8 p-8 text-start">
-        <div className="flex flex-col gap-8 w-[80vw]">
-          <div className="flex flex-col self-start gap-2 p-8">
-            <h2 className="text-4xl font-bold">
-              Koleksi Video Pembelajaran Unggulan
-            </h2>
-            <p className="font-semibold text-gray-500">
-              Jelajahi Dunia Pengetahuan Melalui Pilihan Kami!
-            </p>
-            <ul className="flex gap-6 mt-12 font-semibold text-gray-500 cursor-pointer">
-              <li
-                className={`px-5 py-2 ${
-                  category === ""
-                    ? "text-amber-500 border-b-4 border-amber-500"
-                    : ""
-                }`}
-                onClick={() => handleCategoryClick("")}
-              >
-                Semua Kelas
-              </li>
-              <li
-                className={`px-5 py-2 ${
-                  category === "pemasaran"
-                    ? "text-amber-500 border-b-4 border-amber-500"
-                    : ""
-                }`}
-                onClick={() => handleCategoryClick("pemasaran")}
-              >
-                Pemasaran
-              </li>
-              <li
-                className={`px-5 py-2 ${
-                  category === "desain"
-                    ? "text-amber-500 border-b-4 border-amber-500"
-                    : ""
-                }`}
-                onClick={() => handleCategoryClick("desain")}
-              >
-                Desain
-              </li>
-              <li
-                className={`px-5 py-2 ${
-                  category === "pengembanganDiri"
-                    ? "text-amber-500 border-b-4 border-amber-500"
-                    : ""
-                }`}
-                onClick={() => handleCategoryClick("pengembanganDiri")}
-              >
-                Pengembangan Diri
-              </li>
-              <li
-                className={`px-5 py-2 ${
-                  category === "bisnis"
-                    ? "text-amber-500 border-b-4 border-amber-500"
-                    : ""
-                }`}
-                onClick={() => handleCategoryClick("bisnis")}
-              >
-                Bisnis
-              </li>
-            </ul>
-          </div>
-          <Link
-            to="/edit-postingan"
-            className="container grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
-          >
-            {data.length > 0 ? (
-              data
-                .filter(
-                  (item: LocalStorage) =>
-                    category === "" || item.kategori === category
-                )
-                .map((item: LocalStorage, index) => (
-                  <div
-                    key={index}
-                    className="flex flex-col items-start w-full gap-3 p-6 shadow-md cursor-pointer bg-slate-800 rounded-xl hover:scale-90 animate text-white"
-                    onClick={() => saveToLocalStorage(item)}
-                  >
-                    <img
-                      src={item.thumbnail}
-                      alt="Course Thumbnail"
-                      className="object-cover w-full h-56 mb-4 rounded-md"
-                    />
-                    <h2 className="text-xl font-bold">
-                      {item.judul.length > 16
-                        ? item.judul.slice(0, 37) + "..."
-                        : item.judul}
-                    </h2>
-                    <i className="text-gray-500">Rp. {item.harga}</i>
-                    <p className="font-semibold text-gray-500">
-                      {item.deskripsi}
-                    </p>
-                    <div className="flex flex-row gap-4">
-                      <img
-                        src="thumbnail/profile-2.png"
-                        className="w-[12%] rounded-xl"
-                        alt="Profile Image"
-                      />
-                      <div>
-                        <h2 className="font-semibold">Jenna Ortega</h2>
-                        <p>Senior Accountant di Gojek</p>
-                      </div>
-                    </div>
-                  </div>
-                ))
-            ) : (
-              <p className="text-lg text-gray-500">Loading...</p>
-            )}
-          </Link>
+        <div className="xl:grid-cols-3 sm:grid-cols-2 fr grid gap-4">
+          {data.map((content: Video) => {
+            const isDiscount = content.product_isdiscount == true;
+            const discount =
+              (content.product_price ?? 0) * (content.product_discount ?? 0);
+            return (
+              <div className="flex flex-col bg-white w-[455px]">
+                <div className="cursor-pointer hover:opacity-80">
+                  <span className="select-none absolute my-3 text-sm mx-3 bg-amber-300 px-2 text-white font-bold py-1">
+                    {content.product_category}
+                  </span>
+                  {/* Images */}
+                  <ImageWithFallbacks
+                    source={content.product_thumbnail}
+                    width={455}
+                    className="h-[250px] object-cover"
+                  />
+                </div>
+                <div className="px-3 py-4">
+                  <h2 className="font-bold text-xl">{content.product_title}</h2>
+                  <p className="text-sm font-semibold">
+                    {content.product_description}
+                  </p>
+                </div>
+
+                {/* Price, Likes and Views */}
+                <div className="flex justify-between flex-row px-3">
+                  <span>
+                    <ul className="flex flex-row gap-1 font-semibold">
+                      <li>
+                        <i className="ri-eye-line text-gray-400"></i> {content.product_views}
+                      </li>
+                      <li>
+                        <i className="ri-heart-fill text-red-700"></i>{" "}
+                        {content.product_likes}
+                      </li>
+                    </ul>
+                  </span>
+                  {isDiscount ? (
+                    <ul className="flex flex-row gap-1 font-semibold">
+                      <p>Rp.</p>
+                      <li className="line-through">{content.product_price} </li>
+                      <li className="underline-none">{discount}</li>
+                    </ul>
+                  ) : (
+                    <span className="font-semibold">
+                      Rp. {content.product_price}
+                    </span>
+                  )}
+                </div>
+              </div>
+            );
+          })}
         </div>
       </section>
     </>

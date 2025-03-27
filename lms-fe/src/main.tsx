@@ -4,6 +4,9 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./css/global.css";
 import "remixicon/fonts/remixicon.css";
 
+// Smoothscroll
+import SmoothScroll from "@services/components/LenisSmoothScroll.tsx";
+
 // Swiper and modules styles
 import "swiper/swiper-bundle.css";
 
@@ -46,7 +49,9 @@ const router = createBrowserRouter([
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <Provider store={store}>
-      <RouterProvider router={router} />
+      <SmoothScroll>
+        <RouterProvider router={router} />
+        </SmoothScroll>
     </Provider>
   </StrictMode>
 );

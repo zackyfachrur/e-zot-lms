@@ -1,12 +1,14 @@
 import Navbar from "@layouts/Navbar";
-// import VideoListSection from "./VideoListSection";
+import HeroSection from "./HeroSection";
+import VideoListSection from "./VideoListSection";
 import Footer from "@layouts/Footer";
 
 const KelasPages = () => {
   return (
     <>
       <Navbar />
-      {/* <VideoListSection /> */}
+      <HeroSection />
+      <VideoListSection />
       <Footer />
     </>
   );
