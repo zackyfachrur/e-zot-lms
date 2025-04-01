@@ -2,9 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { Video } from "@type/StoreType";
 
-const API_URL = `http://localhost:${import.meta.env.VITE_API_PORT}/${
-  import.meta.env.VITE_PRODUCT_API_ENDPOINT
-}`;
+const API_URL = `http://127.0.0.1:3658/m2/855410-836210-default/15160736`;
 
 export const fetchVideos = createAsyncThunk("videos/fetchVideos", async () => {
   const response = await axios.get(API_URL);
@@ -14,7 +12,7 @@ export const fetchVideos = createAsyncThunk("videos/fetchVideos", async () => {
 export const editVideo = createAsyncThunk(
   "videos/editVideo",
   async (video: Video) => {
-    const response = await axios.put(`${API_URL}/${video.id}`, video);
+    const response = await axios.put(`${API_URL}/${video.product_id}`, video);
     return response.data;
   }
 );

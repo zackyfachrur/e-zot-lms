@@ -13,7 +13,7 @@
       "@type/*": ["./src/utils/types/*"],
       "@layouts/*": ["./src/layouts/*"],
       "@store/*": ["./src/store/*"],
-      "@img/*": ["./public/*"],
+      "@img/*": ["./src/assets/*"],
       "@services/*": ["./src/services/*"]
     },
 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import Avatar from "/E-ZOT-Logo.png";
-import NavbarLogo from "/E-ZOT-Logo.png";
+import Avatar from "@img/E-ZOT-Logo.png";
+import NavbarLogo from "@img/E-ZOT-Logo.png";
 import { User } from "@type/AuthType";
 
 const Navbar = () => {

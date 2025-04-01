@@ -1,7 +1,7 @@
 import Navbar from "@layouts/Navbar";
 import LoginForm from "./components/LoginForm";
 
-const LoginSection = () => {
+export default function LoginSection(){
   return (
     <section className="flex flex-row items-center justify-around h-[100vh]">
       <Navbar />
@@ -22,4 +22,3 @@ const LoginSection = () => {
   );
 };
 
-export default LoginSection;

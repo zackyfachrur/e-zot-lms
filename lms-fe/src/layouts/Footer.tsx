@@ -1,4 +1,4 @@
-import FooterLogo from "/E-ZOT-Logo.png";
+import FooterLogo from "@img/E-ZOT-Logo.png";
 
 const Footer = () => {
   return (

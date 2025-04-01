@@ -8,7 +8,7 @@ import useHandlePassword from "@services/HandlePassword";
 import { AuthLogin } from "@store/AuthAsyncThunk";
 import LoginHints from "./LoginHint";
 
-const RegisterForm = () => {
+export default function RegisterForm(){
   const dispatch = useDispatch<AppDispatch>();
   const { error, loading } = useSelector(
     (state: RootState) => state.authentication
@@ -106,4 +106,3 @@ const RegisterForm = () => {
   );
 };
 
-export default RegisterForm;

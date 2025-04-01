@@ -2,7 +2,7 @@ import RegisterForm from "./components/RegisterForm";
 // import BrandLogo from "/E-ZOT-Logo.png";
 import Navbar from "@layouts/Navbar";
 
-const RegisterSection = () => {
+export default function RegisterSection() {
   return (
     <section className="flex flex-row items-center justify-around h-[100vh]">
       <Navbar />
@@ -41,4 +41,3 @@ const RegisterSection = () => {
   );
 };
 
-export default RegisterSection;

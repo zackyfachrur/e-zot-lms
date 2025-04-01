@@ -1,4 +1,4 @@
-const LoginHints = () => {
+export default function LoginHints() {
   return (
     <>
       <div className="flex flex-row items-center justify-center w-full">
@@ -29,4 +29,3 @@ const LoginHints = () => {
   );
 };
 
-export default LoginHints;

@@ -1,12 +1,16 @@
 export type Video = {
-  id?: string | undefined;
-  title?: string;
-  url?: string;
-  judul?: string;
-  deskripsi?: string;
-  thumbnail?: string;
-  kategori?: string;
-  harga?: string;
+  productId?: string | undefined;
+  userId?: number;
+  userUsername?: string | undefined;
+  productThumbnail?: string | undefined;
+  productTitle?: string | undefined;
+  productLikes?: string | undefined;
+  productViews?: string | undefined;
+  productDescription?: string | undefined;
+  productCategory?: string | undefined;
+  productPrice?: number | undefined;
+  productIsDiscount?: boolean | undefined;
+  productDiscount?: number | undefined;
 };
 
 export type Data = {
