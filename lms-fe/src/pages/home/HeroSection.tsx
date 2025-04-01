@@ -1,8 +1,8 @@
-import ImageWithFallbacks from "@components/img/ImageWithFallback";
+import ImageWithFallbacks from "@components/fallback/ImageWithFallback";
 import HeroImages from "@img/home/Hero-Images.png";
 import ClientSwipers from "@components/swipers/ClientSwiper";
 
-const HeroSection = () => {
+export default function HeroSection() {
   return (
     <>
       <section className="flex items-center justify-center flex-row pt-12 pb-24 bg-[url('/Hero-BG.png')] h-[95vh]">
@@ -39,5 +39,3 @@ const HeroSection = () => {
     </>
   );
 };
-
-export default HeroSection;

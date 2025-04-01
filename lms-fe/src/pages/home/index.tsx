@@ -2,7 +2,7 @@ import Navbar from "@layouts/Navbar";
 import HeroSection from "./HeroSection";
 import Footer from "@layouts/Footer";
 
-const HomePages = () => {
+ export default function HomePages() {
   return (
     <>
       <Navbar />
@@ -12,4 +12,3 @@ const HomePages = () => {
   );
 };
 
-export default HomePages;

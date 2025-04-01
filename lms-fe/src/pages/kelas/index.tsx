@@ -1,17 +1,18 @@
 import Navbar from "@layouts/Navbar";
 import HeroSection from "./HeroSection";
-import VideoListSection from "./VideoListSection";
+// import VideoListSection from "./VideoListSection";
+import CardList from "./CardList";
 import Footer from "@layouts/Footer";
 
-const KelasPages = () => {
+export default function KelasPages() {
   return (
     <>
       <Navbar />
       <HeroSection />
-      <VideoListSection />
+      <CardList/>
+      {/* <VideoListSection /> */}
       <Footer />
     </>
   );
 };
 
-export default KelasPages;
